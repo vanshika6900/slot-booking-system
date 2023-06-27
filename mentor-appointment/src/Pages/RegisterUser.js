@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function LoginUser() {
   const navigate = useNavigate();
@@ -21,6 +22,12 @@ function LoginUser() {
       body: JSON.stringify(formData),
     });
     const resData = await res.json();
+    console.log(resData);
+
+    Swal.fire({
+      icon: "success",
+      text: "Registered Successfully",
+    });
     navigate("/login");
   };
   return (

@@ -4,6 +4,7 @@ import PersonalDets from "../Components/PersonalDets";
 import ProfessionalDets from "../Components/ProfessionalDets";
 import { useNavigate, useParams } from "react-router-dom";
 import NoteContext from "../context/NoteContext";
+import Swal from "sweetalert2";
 
 function ApplyMentor() {
   const [formData, setFormData] = useState({
@@ -35,6 +36,13 @@ function ApplyMentor() {
       }),
     });
     const resData = await res.json();
+    console.log(resData);
+    if (resData.Success) {
+      Swal.fire({
+        icon: "success",
+        text: "Appintment rescheduled Successfully",
+      });
+    }
   };
   return (
     <div className="flex">

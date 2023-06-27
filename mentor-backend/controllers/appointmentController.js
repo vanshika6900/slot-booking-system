@@ -35,7 +35,7 @@ const getAppointmentById = async (req, res) => {
       return res.status(404).json({ error: "Appointment not found." });
     }
 
-    res.status(200).json(appointment);
+    res.status(200).json({ Success: true, appointment });
   } catch (error) {
     res
       .status(500)
@@ -107,7 +107,7 @@ const updateAppointmentById = async (req, res) => {
     // if (!appointment) {
     //   return res.status(404).json({ error: "Appointment not found." });
     // }
-    res.status(200).json(appointment);
+    res.status(200).json({ Success: true, appointment });
   } catch (error) {
     res
       .status(500)
@@ -123,7 +123,9 @@ const deleteAppointmentById = async (req, res) => {
     if (!appointment) {
       return res.status(404).json({ error: "Appointment not found." });
     }
-    res.status(200).json({ message: "Appointment deleted successfully." });
+    res
+      .status(200)
+      .json({ Success: true, message: "Appointment deleted successfully." });
   } catch (error) {
     res
       .status(500)

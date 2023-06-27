@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import SideNav from "../Components/SideNav";
 import { useNavigate, useParams } from "react-router-dom";
 import NoteContext from "../context/NoteContext";
+import Swal from "sweetalert2";
 
 function Appointments() {
   const [data, setData] = useState([]);
@@ -19,7 +20,7 @@ function Appointments() {
         `http://localhost:8080/api/appointments/${userData.id}`
       );
       const resData = await res.json();
-      setData(resData);
+      setData(resData.appointment);
     } catch (error) {
       console.error("Error fetching appointments:", error);
     }
@@ -37,6 +38,13 @@ function Appointments() {
       }),
     });
     const resData = await res.json();
+    console.log(resData);
+    if (resData.Success) {
+      Swal.fire({
+        icon: "success",
+        text: "Appintment rescheduled Successfully",
+      });
+    }
     setReload(!reload);
   };
   const handleDelete = async (e, id) => {

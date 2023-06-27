@@ -28,13 +28,13 @@ const registerUser = asyncHandler(async (req, res) => {
     });
     console.log(`user created ${user}`);
     if (user) {
-      res.status(200).json({ email: user.email });
+      res.status(200).json({ Success: true, email: user.email });
     } else {
       res.status(400);
       throw new Error("user data not valid");
     }
 
-    res.json({ message: "register the user" });
+    res.json({ Success: true, message: "register the user" });
   } catch (error) {
     res.status(500).json({ error: "An error occurred here.", error });
   }
@@ -93,7 +93,7 @@ const getUser = asyncHandler(async (req, res) => {
     res.json({ user });
   } catch (error) {
     console.error("Error fetching user:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ Success: true, message: "Internal Server Error" });
   }
 });
 
@@ -117,7 +117,7 @@ const putContact = asyncHandler(async (req, res) => {
       return res.status(400).json({ message: "User is already a mentor" });
     }
 
-    res.json({ message: "User updated to mentor successfully" });
+    res.json({ Success: true, message: "User updated to mentor successfully" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error here" });

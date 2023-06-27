@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import NoteContext from "../context/NoteContext";
 
 function LoginUser() {
@@ -29,6 +30,10 @@ function LoginUser() {
 
     localStorage.setItem("authToken", resData.authToken);
     setAuthToken(resData.authToken);
+    Swal.fire({
+      icon: "success",
+      text: "Logged in Successfully",
+    });
     navigate("/");
   };
   return (

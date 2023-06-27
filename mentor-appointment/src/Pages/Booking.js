@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import SideNav from "../Components/SideNav";
 import NoteContext from "../context/NoteContext";
-
+import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 
 function Booking() {
@@ -37,6 +37,13 @@ function Booking() {
       body: JSON.stringify({ ...formData, date: new Date(formData.date) }),
     });
     const resData = await res.json();
+    console.log(resData);
+    if (resData.Success) {
+      Swal.fire({
+        icon: "success",
+        text: "Appintment booked Successfully",
+      });
+    }
   };
   useEffect(() => {
     handleSubmit();

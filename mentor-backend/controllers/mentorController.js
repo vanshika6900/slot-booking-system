@@ -20,7 +20,7 @@ const getMentorById = async (req, res) => {
     if (!mentor) {
       return res.status(404).json({ error: "Mentor not found." });
     }
-    res.status(200).json(mentor);
+    res.status(200).json({ Success: true, mentor });
   } catch (error) {
     res
       .status(500)
