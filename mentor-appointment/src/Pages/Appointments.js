@@ -72,7 +72,6 @@ function Appointments() {
         <table class="table table-hover table-bordered border-dark-purple">
           <thead className=" bg-dark-purple text-white">
             <tr>
-              <th scope="col">#</th>
               <th scope="col">ID</th>
               <th scope="col">Date & Time </th>
               <th scope="col">Mentor </th>
@@ -83,10 +82,9 @@ function Appointments() {
           <tbody>
             {data.map((e) => (
               <tr>
-                <th scope="row">1</th>
                 <td>{e._id}</td>
                 <td>{e.date}</td>
-                <td>{e.mentorId.firstName} </td>
+                <td>{e.mentorId?.firstName} </td>
                 <td>
                   <select
                     name="language"

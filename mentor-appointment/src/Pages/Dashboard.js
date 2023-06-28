@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Cards from "../Components/Cards";
 import SideNav from "../Components/SideNav";
+import NoteContext from "../context/NoteContext";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const [open, setOpen] = useState(true);
+  const context = useContext(NoteContext);
+  const navigate = useNavigate();
+
+  const { authToken, setAuthToken } = context;
+  console.log("auth", authToken);
+  useEffect(() => {
+    if (authToken === "") {
+      navigate("/login");
+    }
+  }, [authToken]);
 
   return (
     <div className="flex">
